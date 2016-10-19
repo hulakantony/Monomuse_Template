@@ -38,7 +38,9 @@ h2 {
 .read-more {
   text-decoration: none;
   color: #a1a1a1;
-  font: normal 12px/1 "Verdana", Arial, sans-serif; }
+  font: normal 12px/1 "Verdana", Arial, sans-serif;
+  display: inline-block;
+  vertical-align: middle; }
   .read-more::before {
     content: '';
     display: inline-block;
