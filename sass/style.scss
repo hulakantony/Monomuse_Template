@@ -13,6 +13,7 @@ $Arial: Arial, Helvetica, sans-serif;
 $blueColor: #40cbcd;
 $sign: #a1a1a1;
 $lightGray: #bac0c1;
+$contentWidth: 1100px;
 .clearfix::after {
   content: "";
   display: table;
@@ -63,14 +64,15 @@ body{
 	background: url(../img/shadow.png) no-repeat 50% 0,
 				url(../img/header-back.jpg) repeat-x 0 0;				
 	border-top: 6px solid #585858;
+	min-width: $contentWidth;
 }
 
 .content-wrap{
-	width: 1100px;
+	width: $contentWidth;
 	padding: 0 50px;
-	margin: 0 auto;
+	margin: 0 auto;	
 }
-.contacts-wrap{
+.header-contacts-wrap{
 	padding: 10px 10px 16px 10px;
 	min-height: 40px;
 }
@@ -78,12 +80,14 @@ body{
 	font: normal 12px/1 $Verdana;
 	color: $lightGray;
 	position: relative;
-	.contacts{
+	.header-contacts{
 		float: left;
-		.phone{
+		.header-contacts-phone{
 			margin: 0 15px 0 0;
 			display: inline-block;
 			vertical-align: middle;	
+			text-decoration: none;
+			color: inherit;
 			&::before{
 				background: url(../img/sprite.png) no-repeat 0 0;
 				width: 8px;
@@ -92,9 +96,12 @@ body{
 				vertical-align: middle;
 				content: '';
 				margin: 0 8px 0 0;
-			}		
+			}	
+			&:hover{
+				text-decoration: underline;
+			}	
 		}
-		.email{
+		.header-contacts-email{
 			margin: 0;
 			display: inline-block;
 			vertical-align: middle;
@@ -141,42 +148,43 @@ body{
 	min-height: 87px;
 	padding: 0 35px 0 24px;
 	border-radius: 4px 4px 0 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
 	.logo{
 		background: url(../img/logo.png) no-repeat 0 0;
 		width: 162px;
 		height: 44px;
-		margin: 22px 0 0 0;
-		float: left;
 		text-indent: -9999px;
 	}
 }
-.main-menu{
-		float: right;
-		margin: 38px 0 0 0;
-		font-size: 0; 
+.main-menu{		
 		.menu{
 			margin: 0;
-			padding: 0;			
+			padding: 0;	
+			display: flex;	
+			list-style: none;	
 		}
 		.menu>li{
 			position: relative;
-			display: inline-block;
 			margin: 0 0 0 42px;
-			&:nth-child(5):hover>ul,&:nth-child(6):hover>ul{
-				display: block;	
-				right: 0; 
-			}
+			min-height: 100%;
+			display: flex;			
 			&:hover>ul{
 				display: block;
+			}
+			&:nth-child(5):hover>ul,
+			&:nth-child(6):hover>ul{
+				display: block;	
+				right: 0; 
 			}			
 		}
 		.menu-item{			
 			text-decoration: none;
-			font: normal 14px/1 $Titillium;
-			color: #969696;
-			display: inline-block;
+			font: normal 14px/87px $Titillium;
+			color: #969696;			
 			position: relative;
-			height: 49px;
+			min-height: 100%;
 			&::after{
 				content: '';
 				width: 100%;
@@ -199,24 +207,27 @@ body{
 	background: #fff;
 	border-radius: 0 0 4px 4px;
 	position: absolute;
-	top: 49px;
+	top: 100%;
 	z-index: 2;
 	display: none;
 	li{
 		width: 100%;
-		padding: 10px 0 13px 18px; 
+		height: 30px;
 		border-bottom: 1px solid #f6f6f6;
+		padding: 0 0 0 18px;
 		&:last-child{
 			border-bottom: none;
 		}
+		&:hover>a{
+			color: $blueColor;
+		}
 		a{
-			font: normal 11px/1 $Verdana;
+			font: normal 11px/31px $Verdana;
 			height: 100%;
 			text-decoration: none;
-			color: #969696;
-			&:hover{
-				color: $blueColor;
-			}
+			color: #969696;	
+			width: 100%;
+			display: block;		
 		}
 	}
 }
@@ -306,10 +317,9 @@ body{
 	}
 }
 .buy-now-wrap{
-	text-align: center;
 	min-height: 92px;
 	background: url(../img/border.jpg) repeat-x 0 100%, #fff;
-	padding: 18px 110px 0 110px;
+	padding: 18px 110px 25px 110px;
 	h1{
 		float: left;
 		margin: 8px 0 0 0;
@@ -342,37 +352,40 @@ body{
 
 .capabilities-wrap{
 	background: linear-gradient(to top, #f3f7f7 0%, #f9fdfc 100%);
-	padding: 0 30px;
+	padding: 0 50px 0 30px;
+	margin: 0 -20px 0 0;	
 	.capability{
 		padding: 33px 0 45px 0;
 		float: left;
 		width: 300px;
 		margin: 0 20px 0 0;
-		&:last-child{
-			margin: 0;
-		}
+		//background: linear-gradient(to top, #f3f7f7 0%, #f9fdfc 100%);
 		h3{
 			margin: 0 0 20px 0;
 			display: inline-block;
 			vertical-align: middle;
 			&::before{
 				content: '';
+				text-align: center;
+				color: #fff;
+				font: bold 12px/20px $Arial; 
 				display: inline-block;
 				vertical-align: middle;
 				width: 20px;
 				height: 20px;
 				margin: 0 12px 0 0;
-				background: url(../img/sprite.png) no-repeat 0 0;
+				background: #939b9b;
+				border-radius: 50%;
 			}
 		}
 		&:nth-child(1) h3::before{
-			background-position: 0 -46px;
+			content:'1';
 		}
 		&:nth-child(2) h3::before{
-			background-position: -20px -46px;
+			content:'2';
 		}
 		&:nth-child(3) h3::before{
-			background-position: -40px -46px;
+			content:'3';
 		}
 		p{
 			font: normal 12px/1.6666 $Verdana;
@@ -390,7 +403,6 @@ body{
 .posts{
 	float: left;
 	width: 470px;
-	margin: 0 20px 0 0;
 	.blog{
 		font: normal 10px/1 $Verdana;
 		color: $sign;
@@ -455,6 +467,7 @@ body{
 .about-us{
 	float: left;
 	width: 470px;
+	padding: 0 0 0 20px;
 	h2{
 		width: 100%;
 		padding-left: 0;
@@ -468,18 +481,12 @@ body{
 		font: normal 12px/1.6666 $Verdana;
 		margin: 0 0 26px 0;
 	}
-	.bold{
-		font-weight: bold;
-		margin: 0 0 15px 0;
-	}
 }
 .buttons-wrap{
 	font-size: 0;
 	.button{
-		padding: 12px 16px 0 13px;		
-		color: #fff;
-		width: 130px;
-		height: 36px;
+		padding: 12px 48px 12px 13px;		
+		color: #fff;		
 		text-decoration: none;
 		display: inline-block;
 		text-align: left;
